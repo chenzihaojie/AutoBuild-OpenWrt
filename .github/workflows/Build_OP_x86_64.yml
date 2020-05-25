@@ -74,8 +74,9 @@ jobs:
 
     - name: Download package
       id: package
+      working-directory: ./openwrt
       run: |
-        make download -j8
+        make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
